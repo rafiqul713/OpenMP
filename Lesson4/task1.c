@@ -24,6 +24,16 @@ for(i=0;i<N;i++){
     b[i]=i;
 }
 time=omp_get_wtime();
+/*
+The mapping of loop iterations to threads of a parallel region can be
+specified precisely by using the scheduling parameter.
+schedule(static)/Static distribution: The iterations are assigned in blocks of size
+block size in a round-robin fashion to the threads of the team.
+
+nowait: At the end of a parallel loop, all participating threads are synchronized
+implicitly, which can be avoided by using the parameter nowait.
+*/
+
 #pragma omp parallel shared(a,b,x) private(i) num_threads(8) default(none)
 #pragma omp for schedule(static) nowait
 for(i=0;i<N;i++){

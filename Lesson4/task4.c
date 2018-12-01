@@ -10,6 +10,10 @@ and the situation where it occurs.
 int x =0;
 int y =0;
 
+/*
+critical section, which is executed by only one thread at a time
+*/
+
 void fun1 () {
     # pragma omp critical(one)
     {

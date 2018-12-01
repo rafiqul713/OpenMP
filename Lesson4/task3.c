@@ -23,6 +23,12 @@ double delta,x,pi=0.0;
 float time;
 delta =1.0/(double)intervals;
 time= omp_get_wtime();
+/*
+lastprivate(list_of_variable): Creation of variables according to private and
+additionally copying the value of the sequentially last iteration or lexically last
+section onto the variable outside of the worksharing region.
+*/
+
 #pragma omp parallel for private(j,x) shared(delta,intervals) lastprivate(pi)
 for(j=0;j<=intervals;j++){
     x=((double)j-0.5)*delta;

@@ -28,6 +28,11 @@ int fib(int n)
 int main(){
 
 int fibonacci;
+
+/*
+Execution of a structured block within a parallel region only by the master
+thread.
+*/
 #pragma omp parallel
 #pragma omp master
 fibonacci=fib(N);
